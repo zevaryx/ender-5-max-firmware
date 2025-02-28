@@ -4,9 +4,11 @@ Repository of firmware and root tools for the Ender 5 Max.
 
 Once Creality releases a web page for the Ender 5 Max firmware, the script will be updated to pull automatically from that.
 
-Root tools based on the Crealtiy firmware scripts made by @pellcorp for the K1 series: <https://github.com/pellcorp/creality/tree/main/firmware>
+Root tools based on the Crealtiy firmware scripts made by [@pellcorp](https://github.com/pellcorp) for the K1 series: <https://github.com/pellcorp/creality/tree/main/firmware>
 
 ## Pre-rooted firmware
+
+### I WILL NOT BE HELD RESPONSIBLE IF YOU BRICK YOUR PRINTER - CREATING AND INSTALLING CUSTOM FIRMWARE IS RISKY
 
 Default password is `creality_2025` in the pre-rooted firmware
 
