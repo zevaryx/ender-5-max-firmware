@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Based on https://github.com/pellcorp/creality/blob/main/firmware/create.sh"
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd -P)"
 
 commands="7z unsquashfs mksquashfs mkpasswd"
