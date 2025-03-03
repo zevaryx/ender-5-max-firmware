@@ -15,3 +15,7 @@ Default password is `creality_2025` in the pre-rooted firmware
 To create pre-rooted firmware, run `create.sh` and place the resulting .img file on a flash drive, then plug it into your printer.
 
 Pre-rooted firmware OTA images can be found in the releases. Versions will always start with `V6` to allow for easy flashing
+
+### How to install
+
+Simply place the .img on a flash drive and insert it into the screen of the printer. Navigate to the home page if it's not already there, and it'll pop up asking to update
