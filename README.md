@@ -19,3 +19,24 @@ Pre-rooted firmware OTA images can be found in the releases. Versions will alway
 ### How to install
 
 Simply place the .img on a flash drive and insert it into the screen of the printer. Navigate to the home page if it's not already there, and it'll pop up asking to update
+
+### How to compile
+
+#### WIP, but includes the basics
+
+On an Ubuntu-based system, we need to install some dependencies
+
+```bash
+sudo apt-get update && sudo apt-get install p7zip squashfs-tools whois git
+```
+
+This will install the required commands to run the create script:
+
+```bash
+git clone https://github.com/zevaryx/ender-5-max-firmware.git e5m-firmware
+cd e5m-firmware
+chmod +x ./create.sh
+./create.sh
+```
+
+This will build the image and save the pre-rooted image to the current directory
