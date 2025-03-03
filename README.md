@@ -20,9 +20,25 @@ Pre-rooted firmware OTA images can be found in the releases. Versions will alway
 
 Simply place the .img file from the latest release on the right on a flash drive and insert it into the screen of the printer. Navigate to the home page if it's not already there, and it'll pop up asking to update
 
-### How to compile
+## Revert to stock
 
-#### WIP, but includes the basics
+### UNTESTED. THIS MAY BRICK YOUR PRINTER. I AM NOT RESPONSIBLE FOR ANY BRICKED PRINTERS AS A RESULT FROM ATTEMPTING THIS.
+
+SSH as root then run
+
+sed -i -e 's/6.2.0.10/1.0.0.0/g' /etc/ota_info
+
+Download and put this on a flash drive
+
+<https://github.com/zevaryx/ender-5-max-firmware/raw/refs/heads/main/F004_ota_img_V1.2.0.10.img>
+
+Plug it into the printer and accept the update
+
+This should work, but I'm unable to test this
+
+## Build your own firmware
+
+### WIP, but includes the basics
 
 On an Ubuntu-based system, we need to install some dependencies
 
