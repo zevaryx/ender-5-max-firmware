@@ -18,7 +18,7 @@ Pre-rooted firmware OTA images can be found in the releases. Versions will alway
 
 ### How to install
 
-Simply place the .img on a flash drive and insert it into the screen of the printer. Navigate to the home page if it's not already there, and it'll pop up asking to update
+Simply place the .img file from the latest release on the right on a flash drive and insert it into the screen of the printer. Navigate to the home page if it's not already there, and it'll pop up asking to update
 
 ### How to compile
 
