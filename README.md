@@ -2,39 +2,51 @@
 
 Repository of firmware and root tools for the Ender 5 Max.
 
-Once Creality releases a web page for the Ender 5 Max firmware, the script will be updated to pull automatically from that.
-
 Root tools based on the Crealtiy firmware scripts made by [@pellcorp](https://github.com/pellcorp) for the K1 series: <https://github.com/pellcorp/creality/tree/main/firmware>
 
-## Pre-rooted firmware
+## How to install
 
 ### I WILL NOT BE HELD RESPONSIBLE IF YOU BRICK YOUR PRINTER - CREATING AND INSTALLING CUSTOM FIRMWARE IS RISKY
 
-Default password is `creality_2025` in the pre-rooted firmware
+1. Download the latest pre-rooted firmware [from the releases](https://github.com/zevaryx/ender-5-max-firmware/releases)
+    - Make sure you download the file ending in .img!
+2. Place the pre-rooted firmware onto a flash drive
+    - Should be formatted in FAT32 or NTFS
+3. Plug the flash drive into the printer and navigate to the home page (if you were not already there)
+4. Accept the update and let it finish installing
 
-To create pre-rooted firmware, run `create.sh` and place the resulting .img file on a flash drive, then plug it into your printer.
+Congratulations! You can now SSH as root
 
-Pre-rooted firmware OTA images can be found in the releases. Versions will always start with `V6` to allow for easy flashing
+The default password is `creality_2025` in the pre-rooted firmware
 
-### How to install
-
-Simply place the .img file from the latest release on the right on a flash drive and insert it into the screen of the printer. Navigate to the home page if it's not already there, and it'll pop up asking to update
-
-## Revert to stock
+## How to downgrade/go back to stock
 
 ### UNTESTED. THIS MAY BRICK YOUR PRINTER. I AM NOT RESPONSIBLE FOR ANY BRICKED PRINTERS AS A RESULT FROM ATTEMPTING THIS.
 
-SSH as root then run
+1. SSH as root
+2. Run the following:
 
-sed -i -e 's/6.2.0.10/1.0.0.0/g' /etc/ota_info
+    ```bash
+    # Get the current version, regardless of what it is
+    VERSION=$(grep 'ota_version' '/etc/ota_info' | awk -F'=' '{print $2}')
 
-Download and put this on a flash drive
+    # Forcefully set the version to 1.0.0.0, which is below the minimum
+    for file in /etc/ota_info /usr/data/creality/userdata/config/system_version.json; do
+        sed -i -e "s/${VERSION}/1.0.0.0/g" $file
+    done
 
-<https://github.com/zevaryx/ender-5-max-firmware/raw/refs/heads/main/F004_ota_img_V1.2.0.10.img>
+    # Reboot the system to force reloading of the files from disk
+    reboot
+    ```
 
-Plug it into the printer and accept the update
+3. Download the v1.2.0.10 firmware from here:
 
-This should work, but I'm unable to test this
+    <https://github.com/zevaryx/ender-5-max-firmware/raw/refs/heads/main/F004_ota_img_V1.2.0.10.img>
+
+4. Place the v1.2.0.10 firmware onto a flash drive
+5. Plug it into the printer and accept the update
+
+This will install the earliest publicly available (by DM from support) firmware for the Ender 5 Max, allowing you to upgrade to the latest or any other version.
 
 ## Build your own firmware
 
