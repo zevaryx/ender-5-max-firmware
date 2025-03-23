@@ -4,6 +4,8 @@ Repository of firmware and root tools for the Ender 5 Max.
 
 Root tools based on the Crealtiy firmware scripts made by [@pellcorp](https://github.com/pellcorp) for the K1 series: <https://github.com/pellcorp/creality/tree/main/firmware>
 
+[SimpleAF Discord Server](https://discord.gg/tGGVn5qjgv)
+
 ## How to install
 
 ### I WILL NOT BE HELD RESPONSIBLE IF YOU BRICK YOUR PRINTER - CREATING AND INSTALLING CUSTOM FIRMWARE IS RISKY
