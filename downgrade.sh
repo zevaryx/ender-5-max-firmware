@@ -16,8 +16,8 @@ DOWNGRADING TO STOCK IS EVEN RISKIER.
 EOF
 
 SELECTED_VER="1.2.0.10"
-IMAGE="https://github.com/zevaryx/ender-5-max-firmware/releases/download/v6.2.0.10/F004_ota_img_V1.2.0.10.img"
-CHECKSUM="https://github.com/zevaryx/ender-5-max-firmware/releases/download/v6.2.0.10/F004_ota_img_V1.2.0.10.img.sha256"
+IMAGE="https://media.githubusercontent.com/media/zevaryx/ender-5-max-firmware/refs/heads/main/firmware/F004_ota_img_V1.2.0.10.img"
+CHECKSUM="https://raw.githubusercontent.com/zevaryx/ender-5-max-firmware/refs/heads/main/firmware/F004_ota_img_V1.2.0.10.img.sha256"
 FILENAME="F004_ota_img_V1.2.0.10.img"
 
 echo "Downgrading to ${SELECTED_VER}"
