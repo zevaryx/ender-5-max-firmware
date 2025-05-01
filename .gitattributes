@@ -1,2 +1,1 @@
-F004_ota_img_V1.2.0.10.img filter=lfs diff=lfs merge=lfs -text
-F004_ota_img_V1.2.0.15.img filter=lfs diff=lfs merge=lfs -text
+firmware/*.img filter=lfs diff=lfs merge=lfs -text
