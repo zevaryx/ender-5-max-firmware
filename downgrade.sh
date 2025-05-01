@@ -1,25 +1,3 @@
-#!/bin/bash
-
-# Use jq to parse raw releases and extract the wanted filename
-get_filename() {
-    RELEASES=$1
-    TAG=$2
-    VER=$3
-
-    echo "${RELEASES}" | # Prime releases for processing
-    jq ".[] | select(.tag_name==\"${TAG}\") | .assets[] | select((.name | ascii_downcase) == (\"F004_ota_img_${VER}.img\" | ascii_downcase)) | .name" -r # Get the filename
-}
-
-# Use jq to parse raw releases and extract the wanted download url
-get_image() {
-    RELEASES=$1
-    TAG=$2
-    VER=$3
-
-    echo "${RELEASES}" | # Prime releases for processing
-    jq ".[] | select(.tag_name==\"${TAG}\") | .assets[] | select((.name | ascii_downcase) == (\"F004_ota_img_${VER}.img\" | ascii_downcase)) | .browser_download_url" -r # Get the download url
-}
-
 cat << EOF
 
 ###########
@@ -37,30 +15,12 @@ DOWNGRADING TO STOCK IS EVEN RISKIER.
 
 EOF
 
-# Let's get the version the user wants to install
-RAW_RELEASES=$(curl --silent "https://api.github.com/repos/zevaryx/ender-5-max-firmware/releases")
-TAGS=()
-VERSIONS=()
-IFS=$'\n' read -r -d '' -a TAGS < <( echo "${RAW_RELEASES}" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' && printf '\0' )
-for tag in "${TAGS[@]}"; do
-    rel=$(echo $tag | sed -E 's/v6(.*)/v1\1/')
-    VERSIONS+=($rel)
-done
-SELECTED_VER=
-SELECTED_TAG=
-PS3="Select version to downgrade to: "
-
-select ver in "${VERSIONS[@]}"; do
-    SELECTED_VER="${VERSIONS[REPLY-1]}"
-    SELECTED_TAG="${TAGS[REPLY-1]}"
-    break
-done
+SELECTED_VER="1.2.0.10"
+IMAGE="https://github.com/zevaryx/ender-5-max-firmware/releases/download/v6.2.0.10/F004_ota_img_V1.2.0.10.img"
+CHECKSUM="https://github.com/zevaryx/ender-5-max-firmware/releases/download/v6.2.0.10/F004_ota_img_V1.2.0.10.img.sha256"
+FILENAME="F004_ota_img_V1.2.0.10.img"
 
 echo "Downgrading to ${SELECTED_VER}"
-
-IMAGE=$(get_image "${RAW_RELEASES}" "${SELECTED_TAG}" "${SELECTED_VER}")
-CHECKSUM="${IMAGE}.sha256"
-FILENAME=$(get_filename "${RAW_RELEASES}" "${SELECTED_TAG}" "${SELECTED_VER}")
 
 # Get the current version, regardless of what it is
 LOCAL_VERSION=$(grep 'ota_version' '/etc/ota_info' | awk -F'=' '{print $2}')
