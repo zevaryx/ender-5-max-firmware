@@ -1,4 +1,2 @@
-*.img
-*.sha256
 extracted/
 create_tmp.sh
