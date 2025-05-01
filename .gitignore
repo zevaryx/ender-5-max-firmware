@@ -1,3 +1,4 @@
-F004_ota_img_V6*
+*.img
+*.sha256
 extracted/
 create_tmp.sh
