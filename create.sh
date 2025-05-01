@@ -15,12 +15,12 @@ done
 
 BOARD_SHORT_NAME=F004
 # DOWNLOAD_PAGE=download-k1-flagship
-CREALITY_VERSION=1.2.0.15
+CREALITY_VERSION=1.2.0.20
 
 # thanks to Neon for showing me how to derive the password
 FIRMWARE_PASSWORD=$(mkpasswd -m md5 "${BOARD_SHORT_NAME}C3_7e_bz" -S cxswfile)
 
-version="6.2.0.15"
+version="6.2.0.20"
 
 function write_ota_info() {
     echo "ota_version=${version}" > /tmp/${version}-pellcorp/ota_info
@@ -46,7 +46,7 @@ function update_rootfs() {
 }
 
 # download=$(wget -q https://www.creality.com/pages/${DOWNLOAD_PAGE} -O- | grep -o  "\"\(.*\)V${CREALITY_VERSION}.img\"" | head -1 | tr -d '"')
-old_image_name="F004_ota_img_V1.2.0.15.img"
+old_image_name="F004_ota_img_V1.2.0.20.img"
 board_name="F004"
 old_directory="${board_name}_ota_img_V${CREALITY_VERSION}"
 old_sub_directory="ota_v${CREALITY_VERSION}"
