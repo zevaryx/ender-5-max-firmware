@@ -1,3 +1,11 @@
+# Stock Root Password
+
+With the Co Print announcement for the Ender 5 Max, we now have the stock root password:
+
+`Creality@2024_Wh_464`
+
+To use this, run `ssh root@<printer_ip>` and use the above password. Pre-rooted firmware is no longer necessary for root access
+
 # Ender 5 Max Firmware Repository
 
 Repository of firmware and root tools for the Ender 5 Max.
